@@ -79,7 +79,7 @@ module tb3;
  
         #10 $finish;
     end
-endmodule
+    endmodule
 
 ### Truth Table
 
@@ -90,22 +90,27 @@ endmodule
 
 STEP 1 – Open Terminal
 Open a terminal in the experiment folder.
+
 STEP 2 – Load Synopsys Environment
 source /synopsys/start.sh
+
 STEP 3 – Compile Using VCS
 vcs half_add_sub.v half_add_sub_tb.v -full64
 If compilation is successful, VCS generates the simulation executable:
 simv
+
 STEP 4 – Run Simulation
 ./simv
 The terminal displays the input combinations and corresponding outputs Sum, Carry, Diff, and Borrow.
 A VCD waveform file is also generated:
 half_add_sub.vcd
+
 STEP 5 – Open DVE
 dve -full64
 Other option
 dve -full64 &
 A DVE environment will open.
+
 DVE Waveform Verification
 In DVE:
 •	Open the testbench hierarchy.
@@ -118,16 +123,26 @@ o	Diff
 o	Borrow
 •	Add the signals to the waveform window.
 •	Run/inspect the waveform.
+
 •	Verify that Sum = 1 whenever A and B are different (A⊕B), and Carry = 1 only when A=1 AND B=1.
+
 •	Verify that Diff = 1 whenever A and B are different (same XOR pattern as Sum), and Borrow = 1 only when A=0 AND B=1.
+
 •	Confirm that Carry and Borrow never both go high for the same input pair, since they represent different (AND vs A'B) conditions.
+
 The waveform should agree with the truth table.
+
 ### Expected Result
+
 The Half Adder and Half Subtractor were realized using Verilog HDL:
+
 •	Sum = A⊕B, Carry = A.B
 •	Diff = A⊕B, Borrow = A'.B
+
 The design was compiled and simulated using Synopsys VCS, and the functionality was verified using DVE waveform analysis, matching the expected truth table.
+
 ### Output
+
 <img width="1200" height="252" alt="exp3 1" src="https://github.com/user-attachments/assets/3028dcbf-db53-4035-918c-30661f2ebf0e" />
 <img width="1207" height="289" alt="exp3 2" src="https://github.com/user-attachments/assets/18d47dbf-4212-4995-b506-422d0de783f5" />
 
